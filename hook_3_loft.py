@@ -64,5 +64,5 @@ length = bounding_box.max.X - bounding_box.min.X
 show(input, part_A, a1, b1, b3, b4, names=["input", "part_A", "a1", "b1", "b3", "b4" ],colors=["#FF0000AA", "blue", "green", "yellow", "purple", "orange"])
 
 if __name__ == "__main__":
-    part_A.part.export_stl(f"{P_models_dir}/hook_loft_{int(P_length)}mm.stl")
-    part_A.part.export_step(f"{P_models_dir}/hook_loft_{int(P_length)}mm.step")
+    part_A.part.export_stl(f"{P_models_dir}/hook_loft_{int(P_length)}x{int(P_height)}mm.stl")
+    part_A.part.export_step(f"{P_models_dir}/hook_loft_{int(P_length)}x{int(P_height)}mm.step")

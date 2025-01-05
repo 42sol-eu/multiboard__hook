@@ -65,37 +65,37 @@ def part_A():
 
         #TODO: fix the corner part after understanding why neither sweep nor revolve works.
         #HINT: maybe create a custom solid with the edges from a3 and b2        
-        if No:
+        if Yes:
             with BuildLine() as l2:
                 line_2 = JernArc((0.0,-1.0,0.0), (0.0,1.0,0.0), radius=1.0, arc_size=-90)
                 #line_2 = Line((0.0,-1.0,0.0),(1.0,0.0,0.0))
             plane = Plane.XZ.offset(P_l3)
-            with BuildSketch(Plane.XZ) as a3:
+            with BuildSketch(line_2 ^ 0) as a3:
                 RegularPolygon(P_a3, 8, rotation=P_rotation)
-                with Locations(Location([P_a3/2.0+2,0.0,  0.0])):
-                    Rectangle(6.0,20.0, mode=Mode.SUBTRACT)
+                #with Locations(Location([P_a3/2.0+2,0.0,  0.0])):
+                #    Rectangle(6.0,20.0, mode=Mode.SUBTRACT)
         
         
-            a4 = revolve(axis=Axis.X, revolution_arc=90.0)
+            a4 = sweep()
             add(a4)
 
         with BuildLine() as l3:
             line_3 = Line((1.0,0.0,0.0),(P_h3,0.0,0.0))
-        with BuildSketch(Plane.YZ.offset(P_h3)) as b3:
+        with BuildSketch(line_3 ^ 0) as b3:
             RegularPolygon(P_b2, 8, rotation=P_rotation)
         
         add(sweep(path=l3))
         #bX = part_A.faces().sort_by(Axis.X).first 
         #c3a = bX.vertices()[1]
         #bX1 = bX.vertices()[3]
-    return part_A
+    return part_A, line_1, line_2, line_3
 
 # [Main]
 input = import_stl_hook()
-part_A = part_A()
+part_A, line_1, line_2, line_3 = part_A()
 
-show(input, part_A, names=["input", "part_A", "none", "none", "none" ],colors=["#FF0000AA", "#0000FFAA", "#00FF00AA", "#00FFFFAA", "#FF00FFAA", "#AA00FFAA"])
+show(input, part_A, line_1, line_2, line_3, names=["input", "part_A", "line_1", "line_2", "line_3" ],colors=["#FF0000AA", "#0000FFAA", "#00FF00AA", "#00FFFFAA", "#FF00FFAA", "#AA00FFAA"])
 
 if True and  __name__ == "__main__":
-    part_A.part.export_stl(f"{P_models_dir}/hook_sweep_{int(P_length)}mm.stl")
-    part_A.part.export_step(f"{P_models_dir}/hook_sweep_{int(P_length)}mm.step")
+    part_A.part.export_stl(f"{P_models_dir}/hook_sweep_{int(P_length)}x{int(P_height)}mm.stl")
+    part_A.part.export_step(f"{P_models_dir}/hook_sweep_{int(P_length)}x{int(P_height)}mm.step")
