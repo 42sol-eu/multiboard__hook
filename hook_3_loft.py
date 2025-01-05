@@ -1,3 +1,11 @@
+"""
+file-name:      hook_3_loft.py
+file-uuid:      29eeadfc-da43-4ac7-b9ef-874ede705b15
+file-version:   2025.0.1
+project-name:   multiboard__hooks
+project-uuid:   c56a8125-5103-46bb-b250-3ebe7c28b11a
+description:    create a MultiBoard push fit hook using the loft function.
+"""
 # [Imports]
 from build123d import *
 

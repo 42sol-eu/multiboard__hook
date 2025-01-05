@@ -1,3 +1,11 @@
+"""
+file-name:      hook_3a_sweep.py
+file-uuid:      9ff34654-b9c2-492b-8a37-ec8b877339af
+file-version:   2025.0.1
+project-name:   multiboard__hooks
+project-uuid:   c56a8125-5103-46bb-b250-3ebe7c28b11a
+description:    create a MultiBoard push fit hook using the sweep function.
+"""
 # [Imports]
 from build123d import *
 

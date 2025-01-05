@@ -1,3 +1,11 @@
+"""
+file-name:      hook_3b_revolve_bend.py
+file-uuid:      153c8f82-3ef1-4e07-8e09-f68ad862b11a
+file-version:   2025.0.1
+project-name:   multiboard__hooks
+project-uuid:   c56a8125-5103-46bb-b250-3ebe7c28b11a
+description:    create a MultiBoard push fit hook using a revolve on the bend.
+"""
 # [Imports]
 from build123d import *
 
