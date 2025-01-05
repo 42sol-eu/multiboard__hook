@@ -23,16 +23,18 @@ def part_A():
 
 
     with BuildPart() as part_A:
-        with BuildSketch(Plane.XZ) as sketch_1:
-            with BuildLine() as lineB_1:
-                line_1 = Line((0.0, -P_height),(-P_a3+3.81, -P_height))
-                line_2 = Line(line_1 @ 1, (-P_a3+3.81+P_height, -P_a3/2))
-                line_3 = Line(line_2 @ 1, (-P_a3+3.81+P_height, +P_a3/2))
-                line_4 = Line(line_3 @ 1, (-P_a3+3.81, P_height))
-                line_5 = Line(line_4 @ 1, (0.0, P_height))
-                line_6 = Line( line_5 @ 1, line_1 @ 0)
-            make_face()
-        #aX = revolve(axis=Axis.Z, revolution_arc=90.0)
+
+        if No:
+            with BuildSketch(Plane.XZ) as sketch_1:
+                with BuildLine() as lineB_1:
+                    line_1 = Line((0.0, -P_height),(-P_a3+3.81, -P_height))
+                    line_2 = Line(line_1 @ 1, (-P_a3+3.81+P_height, -P_a3/2))
+                    line_3 = Line(line_2 @ 1, (-P_a3+3.81+P_height, +P_a3/2))
+                    line_4 = Line(line_3 @ 1, (-P_a3+3.81, P_height))
+                    line_5 = Line(line_4 @ 1, (0.0, P_height))
+                    line_6 = Line( line_5 @ 1, line_1 @ 0)
+                make_face()
+            #aX = revolve(axis=Axis.Z, revolution_arc=90.0)
 
     # part_B = part_A.part.copy().move(Location([0, 0, 20])).rotate(Axis.Y, P_rotation_fails)
         with BuildSketch(Plane.XZ.offset(P_l1)) as a1:
@@ -86,13 +88,13 @@ def part_A():
         #bX = part_A.faces().sort_by(Axis.X).first 
         #c3a = bX.vertices()[1]
         #bX1 = bX.vertices()[3]
-    return part_A, a1, a2, a4, l3, sketch_1, sketch_1
+    return part_A
 
 # [Main]
 input = import_stl_hook()
-part_A, a1, a2, a3, l3, b3, l1 = part_A()
+part_A = part_A()
 
-show(input, part_A, a3, l3, l1, names=["input", "part_A", "b3", "l3", "l1" ],colors=["#FF0000AA", "#0000FFAA", "#00FF00AA", "#00FFFFAA", "#FF00FFAA", "#AA00FFAA"])
+show(input, part_A, names=["input", "part_A", "none", "none", "none" ],colors=["#FF0000AA", "#0000FFAA", "#00FF00AA", "#00FFFFAA", "#FF00FFAA", "#AA00FFAA"])
 
 if True and  __name__ == "__main__":
     part_A.part.export_stl(f"{P_models_dir}/hook_sweep_{int(P_length)}mm.stl")
