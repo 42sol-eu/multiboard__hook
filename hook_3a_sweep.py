@@ -8,13 +8,15 @@ from math import sin, pi
 
 
 # [Parameters]
+P_length = 40.0
+P_height = 20.0
 from hook_2_parameters import * 
 
 # [Functions]
 
 from hook_1_import import import_stl_hook
 
-def part_A():
+def part():
 
     # height of the regular triangle 
     # 60 degrees in radians
@@ -36,7 +38,6 @@ def part_A():
                 make_face()
             #aX = revolve(axis=Axis.Z, revolution_arc=90.0)
 
-    # part_B = part_A.part.copy().move(Location([0, 0, 20])).rotate(Axis.Y, P_rotation_fails)
         with BuildSketch(Plane.XZ.offset(P_l1)) as a1:
             RegularPolygon(P_a1, 8, rotation=P_rotation)
 
@@ -78,14 +79,17 @@ def part_A():
             RegularPolygon(P_b2, 8, rotation=P_rotation)        
         add(sweep(path=l3))
 
-    return part_A, line_1, line_2, line_3
+    return part_A
 
 # [Main]
-input = import_stl_hook()
-part_A, line_1, line_2, line_3 = part_A()
+def main():
+    input = import_stl_hook()
+    part_A = part()
 
-show(input, part_A, line_1, line_2, line_3, names=["input", "part_A", "line_1", "line_2", "line_3" ],colors=["#FF0000AA", "#0000FFAA", "#00FF00AA", "#00FFFFAA", "#FF00FFAA", "#AA00FFAA"])
-
-if True and  __name__ == "__main__":
+    show(input, part_A, names=["input", "part_A"],colors=["#FF0000AA", "#0000FFAA", "#00FF00AA", "#00FFFFAA", "#FF00FFAA", "#AA00FFAA"])
     part_A.part.export_stl(f"{P_models_dir}/hook_sweep_{int(P_length)}x{int(P_height)}mm.stl")
     part_A.part.export_step(f"{P_models_dir}/hook_sweep_{int(P_length)}x{int(P_height)}mm.step")
+
+
+if __name__ == "__main__":
+    main()

@@ -7,13 +7,15 @@ from pathlib import Path
 
 
 # [Parameters]
+P_length = 40.0
+P_height = 20.0
 from hook_2_parameters import * 
 
 
 # [Functions]
 from hook_1_import import import_stl_hook
 
-def part_A():
+def part():
     with BuildPart() as part_A:
         with BuildSketch(Plane.XZ.offset(P_l1)) as a1:
             RegularPolygon(P_a1, 8, rotation=P_rotation)
@@ -52,17 +54,20 @@ def part_A():
             RegularPolygon(P_b3, 8, rotation=P_rotation)
         loft()
 
-    return part_A, a1, a2, a3, a4, b1, b2, b3, b4
+    return part_A
 
 # [Main]
-input = import_stl_hook()
-part_A, a1, a2, a3, a4, b1, b2, b3, b4 = part_A()
+def main():
+    input = import_stl_hook().move(Location([30.0, 0, 0]))
+    part_A = part()
 
-bounding_box = part_A.part.bounding_box()
-length = bounding_box.max.X - bounding_box.min.X 
+    bounding_box = part_A.part.bounding_box()
+    length = bounding_box.max.X - bounding_box.min.X 
 
-show(input, part_A, a1, b1, b3, b4, names=["input", "part_A", "a1", "b1", "b3", "b4" ],colors=["#FF0000AA", "blue", "green", "yellow", "purple", "orange"])
-
-if __name__ == "__main__":
+    show(input, part_A, names=["input", "part_A", ],colors=["#FF0000AA", "blue", "green", "yellow", "purple", "orange"])
+    
     part_A.part.export_stl(f"{P_models_dir}/hook_loft_{int(P_length)}x{int(P_height)}mm.stl")
     part_A.part.export_step(f"{P_models_dir}/hook_loft_{int(P_length)}x{int(P_height)}mm.step")
+
+if __name__ == "__main__":
+    main()

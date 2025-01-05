@@ -1,11 +1,26 @@
+# [Imports]
+import sys
+
 # [Definitions]
 Yes = True
 No = False
 
-# [Parameters]
-P_length = 30.0               # modify the hook length
-P_height = 12.0               # modify the hook height
+main_globals = sys.modules["__main__"].__dict__
 
+# [Parameters]
+if "P_length" not in main_globals:   # you can define the parameter in the main script
+    P_length = 20.0               # modify the hook length
+    print(f'P_length is not defined in the main script, using default value {P_length}')
+else: 
+    P_length = main_globals["P_length"]
+    print(f'P_length is defined in the main script as {P_length}')
+
+if "P_height" not in main_globals:   # you can define the parameter in the main script
+    P_height = 12.0               # modify the hook height
+    print(f'P_height is not defined in the main script, using default value {P_height}')
+else:
+    P_height = main_globals["P_height"]
+    print(f'P_height is defined in the main script as {P_height}')
 # more parameters that might be modified to your needs
 P_file_stl  = "Multiboard__Push-Fit-Hook__15x7.5mm.stl"
 P_file_step = P_file_stl.replace(".stl", ".step")
