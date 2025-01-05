@@ -63,31 +63,21 @@ def part_A():
         
         add(sweep(path=l1))
 
-        #TODO: fix the corner part after understanding why neither sweep nor revolve works.
-        #HINT: maybe create a custom solid with the edges from a3 and b2        
-        if Yes:
-            with BuildLine() as l2:
-                line_2 = JernArc((0.0,-1.0,0.0), (0.0,1.0,0.0), radius=1.0, arc_size=-90)
-                #line_2 = Line((0.0,-1.0,0.0),(1.0,0.0,0.0))
-            plane = Plane.XZ.offset(P_l3)
-            with BuildSketch(line_2 ^ 0) as a3:
-                RegularPolygon(P_a3, 8, rotation=P_rotation)
-                #with Locations(Location([P_a3/2.0+2,0.0,  0.0])):
-                #    Rectangle(6.0,20.0, mode=Mode.SUBTRACT)
+        with BuildLine() as l2:
+            line_2 = JernArc((0.0,-1.0,0.0), (0.0,1.0,0.0), radius=1.0, arc_size=-90)
+        plane = Plane.XZ.offset(P_l3)
+        with BuildSketch(line_2 ^ 0) as a3:
+            RegularPolygon(P_a3, 8, rotation=P_rotation)        
         
-        
-            a4 = sweep()
-            add(a4)
+        a4 = sweep()
+        add(a4)
 
         with BuildLine() as l3:
             line_3 = Line((1.0,0.0,0.0),(P_h3,0.0,0.0))
         with BuildSketch(line_3 ^ 0) as b3:
-            RegularPolygon(P_b2, 8, rotation=P_rotation)
-        
+            RegularPolygon(P_b2, 8, rotation=P_rotation)        
         add(sweep(path=l3))
-        #bX = part_A.faces().sort_by(Axis.X).first 
-        #c3a = bX.vertices()[1]
-        #bX1 = bX.vertices()[3]
+
     return part_A, line_1, line_2, line_3
 
 # [Main]
