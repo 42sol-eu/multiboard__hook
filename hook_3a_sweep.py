@@ -26,18 +26,6 @@ def part():
 
     with BuildPart() as part_A:
 
-        if No:
-            with BuildSketch(Plane.XZ) as sketch_1:
-                with BuildLine() as lineB_1:
-                    line_1 = Line((0.0, -P_height),(-P_a3+3.81, -P_height))
-                    line_2 = Line(line_1 @ 1, (-P_a3+3.81+P_height, -P_a3/2))
-                    line_3 = Line(line_2 @ 1, (-P_a3+3.81+P_height, +P_a3/2))
-                    line_4 = Line(line_3 @ 1, (-P_a3+3.81, P_height))
-                    line_5 = Line(line_4 @ 1, (0.0, P_height))
-                    line_6 = Line( line_5 @ 1, line_1 @ 0)
-                make_face()
-            #aX = revolve(axis=Axis.Z, revolution_arc=90.0)
-
         with BuildSketch(Plane.XZ.offset(P_l1)) as a1:
             RegularPolygon(P_a1, 8, rotation=P_rotation)
 
