@@ -76,5 +76,5 @@ bounding_box = part_A.part.bounding_box()
 length = bounding_box.max.X - bounding_box.min.X 
 
 if True and  __name__ == "__main__":
-    part_A.part.export_stl(f"./models/hook_sweep_{int(length)}mm.stl")
-    part_A.part.export_step(f"./models/hook_sweep_{int(length)}mm.step")
+    part_A.part.export_stl(f"{P_models_dir}/hook_sweep_{int(length)}mm.stl")
+    part_A.part.export_step(f"{P_models_dir}/hook_sweep_{int(length)}mm.step")
