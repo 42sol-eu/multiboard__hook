@@ -18,12 +18,14 @@ from hook_1_import import import_stl_hook
 
 def part():
 
-    # height of the regular triangle 
-    # 60 degrees in radians
+    # calculate the values:
+    # - a = side of the octogon, 
+    # - b = height of outer triangle, 
+    # - c = half of the base / radius to the center of a side
     a = 2 * P_a3 * sin(pi / 8.0)
     b = a / sqrt(2)
     c = b + a / 2 
-    print(f'--------------------------------{P_a3=}, {a=},{b=},{c=}')
+
     with BuildPart() as part_0:
         with BuildSketch(Plane.XZ) as sketch_2:
             with BuildLine() as c1:
