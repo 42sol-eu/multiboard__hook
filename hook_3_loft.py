@@ -1,3 +1,4 @@
+# [Imports]
 from build123d import *
 
 from ocp_vscode import *
@@ -9,6 +10,7 @@ from pathlib import Path
 from hook_2_parameters import * 
 
 
+# [Functions]
 from hook_1_import import import_stl_hook
 
 def part_A():
@@ -62,5 +64,5 @@ length = bounding_box.max.X - bounding_box.min.X
 show(input, part_A, a1, b1, b3, b4, names=["input", "part_A", "a1", "b1", "b3", "b4" ],colors=["#FF0000AA", "blue", "green", "yellow", "purple", "orange"])
 
 if __name__ == "__main__":
-    part_A.part.export_stl(f"{P_models_dir}/hook_loft_{int(length)}mm.stl")
-    part_A.part.export_step(f"{P_models_dir}/hook_loft_{int(length)}mm.step")
+    part_A.part.export_stl(f"{P_models_dir}/hook_loft_{int(P_length)}mm.stl")
+    part_A.part.export_step(f"{P_models_dir}/hook_loft_{int(P_length)}mm.step")
